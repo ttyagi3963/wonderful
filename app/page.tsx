@@ -1,4 +1,5 @@
 import { ProductList } from "@/components/ProductList/ProductList";
+import { CartSummary } from "@/components/CartSummary/CartSummary";
 
 /**
  * Page component displaying the wine collection and cart summary.
@@ -9,10 +10,7 @@ export default async function Home() {
     <div className="min-h-screen">
       <header className="flex justify-between items-center mb-8 border-b pb-4">
         <h1 className="text-3xl font-bold text-gray-900">Wine Collection</h1>
-
-        <div className="bg-white p-4 border rounded shadow-sm">
-          Cart: 0 items ($0.00)
-        </div>
+        <CartSummary />
       </header>
 
       <section>
