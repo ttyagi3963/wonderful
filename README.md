@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Frontend Engineering Code Challenge - Wine Store
 
 Welcome to the Frontend Engineering Manager code challenge! This repository contains a skeleton e-commerce application built with Next.js 16, React 19, and Tailwind CSS.
@@ -68,3 +69,6 @@ We will be looking at:
 6.  **Communication**: How are you talking through your ideas and solutions?
 
 Good luck! 🍷
+=======
+# wonderful
+>>>>>>> 7307e0cdf73e78b1e06fe1ab192395c810573cf6
