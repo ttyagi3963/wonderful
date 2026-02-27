@@ -1,9 +1,10 @@
-import type { Metadata } from 'next';
-import '@/styles/globals.css';
+import type { Metadata } from "next";
+import { CartProvider } from "@/context/CartContext";
+import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  title: 'Frontend Technical Assessment',
-  description: 'Mini Cart Challenge',
+  title: "Frontend Technical Assessment",
+  description: "Mini Cart Challenge",
 };
 
 /**
@@ -17,9 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={`bg-gray-50`}>
-        <main className='max-w-6xl mx-auto p-6'>{children}</main>
+        <CartProvider>
+          <main className="max-w-6xl mx-auto p-6">{children}</main>
+        </CartProvider>
       </body>
     </html>
   );
