@@ -1,8 +1,14 @@
-'use client';
+"use client";
 
-import { createContext, useContext, useState, ReactNode } from 'react';
-import type { CartItem, Product } from '@/types';
-import type { CartContextType } from './CartContext.types';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useState,
+  ReactNode,
+} from "react";
+import type { CartItem, Product } from "@/types";
+import type { CartContextType } from "./CartContext.types";
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
@@ -11,12 +17,22 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
  * @returns {JSX.Element} The CartProvider component that wraps its children with CartContext.
  */
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<any>();
+  const [items, setItems] = useState<CartItem[]>([]);
 
-  const addToCart = (product: Product) => {
-    console.log('Add to cart clicked:', product.name);
-  };
-
+  const addToCart = useCallback((product: Product) => {
+    setItems((prev) => {
+      const existing = prev.find((item) => item.id === product.id);
+      if (existing) {
+        return prev.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item,
+        );
+      }
+      return [...prev, { ...product, quantity: 1 }];
+    });
+  }, []);
+  console.log(items);
   return (
     <CartContext.Provider value={{ items, addToCart }}>
       {children}
@@ -27,7 +43,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {
-    throw new Error('useCart must be used within a CartProvider');
+    throw new Error("useCart must be used within a CartProvider");
   }
   return context;
 };

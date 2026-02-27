@@ -5,10 +5,6 @@ import type { Product } from "@/types";
 import { ProductCard } from "@/components/ProductCard/ProductCard";
 import { Spinner } from "@/components/Spinner/Spinner";
 
-/**
- * Fetches products from /api/products and renders a grid of ProductCards.
- * Handles loading and error states gracefully.
- */
 export const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
