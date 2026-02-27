@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
-import { MOCK_PRODUCTS } from '@/data/mocks';
+import { NextResponse } from "next/server";
+import { MOCK_PRODUCTS } from "@/data/mocks";
 
 /**
  * GET /api/products handler to return a list of products.
